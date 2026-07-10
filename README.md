@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # JobConnect — Auth Service
 
 Microservice responsible for user authentication in the JobConnect platform.  
@@ -127,3 +128,6 @@ The service will start on `http://localhost:5000`
 | Feed Service | 8082 | Spring Boot |
 | Job Service | 8083 | Spring Boot |
 | API Gateway | 8080 | Spring Cloud |
+=======
+# JobOrbit    
+>>>>>>> 6dd0d87dae3a074be922d83e003f36d36ff16eb1
