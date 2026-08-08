@@ -1,0 +1,312 @@
+/* ==========================================================================
+   JobOrbit Design Tokens
+   Palette:
+     --orbit-navy      #0B1120  deep space background (nav / hero / footer)
+     --orbit-navy-soft #131C31  elevated dark surface (cards on dark bg)
+     --orbit-bg        #F6F7FB  app background (cool off-white)
+     --orbit-surface   #FFFFFF  card surface on light bg
+     --orbit-blue      #4361EE  primary accent (brand, links, primary CTA)
+     --orbit-cyan      #22D3EE  secondary glow accent (rings, highlights)
+     --orbit-gold      #F2A93B  tertiary accent (star / featured / warning)
+     --orbit-teal      #0F9D8B  success / shortlisted
+     --orbit-red       #E5484D  danger / rejected
+   Type:
+     Display/Headings -> 'Space Grotesk' (geometric, orbital feel)
+     Body/UI          -> 'Inter'
+   Signature element:
+     Concentric "orbit ring" mark used in the logo, loading state, and as a
+     hover halo on job cards - a planet (the job) with an orbiting ring
+     (the candidate/opportunity in motion).
+   ========================================================================== */
+
+:root {
+  --orbit-navy: #0B1120;
+  --orbit-navy-soft: #131C31;
+  --orbit-bg: #F6F7FB;
+  --orbit-surface: #FFFFFF;
+  --orbit-blue: #4361EE;
+  --orbit-blue-dark: #3346C4;
+  --orbit-cyan: #22D3EE;
+  --orbit-gold: #F2A93B;
+  --orbit-teal: #0F9D8B;
+  --orbit-red: #E5484D;
+  --orbit-text: #1B1F2A;
+  --orbit-muted: #6B7280;
+  --orbit-border: #E5E7F0;
+
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+  --shadow-card-hover: 0 4px 10px rgba(67, 97, 238, 0.10), 0 16px 40px rgba(16, 24, 40, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--orbit-bg);
+  color: var(--orbit-text);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+a { text-decoration: none; }
+
+/* ---------- focus visibility (accessibility) ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--orbit-blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------- Buttons ---------- */
+.btn-orbit-primary {
+  background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-blue-dark));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-orbit-primary:hover {
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.35);
+}
+.btn-orbit-outline {
+  background: transparent;
+  color: var(--orbit-navy);
+  border: 1.5px solid var(--orbit-border);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn-orbit-outline:hover {
+  border-color: var(--orbit-blue);
+  color: var(--orbit-blue);
+}
+.btn-orbit-gold {
+  background: var(--orbit-gold);
+  color: #21160A;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  padding: 0.65rem 1.4rem;
+}
+.btn-orbit-gold:hover { color: #21160A; filter: brightness(1.05); }
+
+/* ---------- Navbar ---------- */
+.orbit-navbar {
+  background: var(--orbit-navy);
+  padding: 0.9rem 0;
+}
+.orbit-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.orbit-mark {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+}
+.orbit-mark .core {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--orbit-gold);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.orbit-mark .ring {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--orbit-cyan);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+.orbit-mark .ring::after {
+  content: '';
+  position: absolute;
+  width: 5px; height: 5px;
+  background: var(--orbit-cyan);
+  border-radius: 50%;
+  top: -2.5px; left: 50%;
+  margin-left: -2.5px;
+}
+.orbit-nav-link {
+  color: rgba(255,255,255,0.78) !important;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem !important;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.orbit-nav-link:hover, .orbit-nav-link.active {
+  color: #fff !important;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ---------- Hero ---------- */
+.orbit-hero {
+  background: radial-gradient(circle at 15% 20%, rgba(67,97,238,0.35), transparent 45%),
+              radial-gradient(circle at 85% 0%, rgba(34,211,238,0.20), transparent 40%),
+              var(--orbit-navy);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 0 5.5rem;
+}
+.orbit-hero::before {
+  content: '';
+  position: absolute;
+  right: -120px; top: -120px;
+  width: 480px; height: 480px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+.orbit-hero::after {
+  content: '';
+  position: absolute;
+  right: -40px; top: -40px;
+  width: 340px; height: 340px;
+  border: 1px solid rgba(34,211,238,0.18);
+  border-radius: 50%;
+}
+.orbit-hero h1 { font-size: 2.85rem; font-weight: 700; }
+.orbit-hero .lead { color: rgba(255,255,255,0.75); font-size: 1.1rem; }
+
+/* ---------- Cards ---------- */
+.orbit-card {
+  background: var(--orbit-surface);
+  border: 1px solid var(--orbit-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.orbit-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+  border-color: rgba(67,97,238,0.25);
+}
+
+.job-card { padding: 1.35rem 1.5rem; position: relative; }
+.job-card .company-badge {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-cyan));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-family: var(--font-display);
+  flex-shrink: 0;
+}
+.job-card .job-type-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(67,97,238,0.10);
+  color: var(--orbit-blue-dark);
+}
+
+/* status chips */
+.status-chip { font-size: 0.72rem; font-weight: 700; padding: 0.28rem 0.7rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.03em; }
+.status-APPLIED { background: rgba(67,97,238,0.12); color: var(--orbit-blue-dark); }
+.status-SHORTLISTED { background: rgba(15,157,139,0.14); color: var(--orbit-teal); }
+.status-REJECTED { background: rgba(229,72,77,0.12); color: var(--orbit-red); }
+.status-WITHDRAWN { background: rgba(107,114,128,0.14); color: var(--orbit-muted); }
+.status-HIRED { background: rgba(242,169,59,0.18); color: #8a5a0d; }
+
+/* ---------- Auth pages ---------- */
+.auth-shell {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: stretch;
+}
+.auth-visual {
+  background: var(--orbit-navy);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+}
+.auth-visual .ring-a, .auth-visual .ring-b, .auth-visual .ring-c {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.auth-visual .ring-a { width: 520px; height: 520px; right: -180px; top: -140px; }
+.auth-visual .ring-b { width: 360px; height: 360px; right: -100px; top: -60px; border-color: rgba(34,211,238,0.18); }
+.auth-visual .ring-c { width: 220px; height: 220px; right: -30px; top: 10px; border-color: rgba(242,169,59,0.25); }
+
+.auth-form-panel { background: #fff; display: flex; align-items: center; }
+
+/* ---------- Sidebar (dashboards) ---------- */
+.orbit-sidebar {
+  background: #fff;
+  border-right: 1px solid var(--orbit-border);
+  min-height: calc(100vh - 64px);
+}
+.orbit-sidebar .side-link {
+  display: block;
+  padding: 0.65rem 1.2rem;
+  color: var(--orbit-text);
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  border-radius: 0;
+}
+.orbit-sidebar .side-link:hover { background: var(--orbit-bg); }
+.orbit-sidebar .side-link.active {
+  border-left-color: var(--orbit-blue);
+  background: rgba(67,97,238,0.06);
+  color: var(--orbit-blue-dark);
+  font-weight: 600;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-card { padding: 1.4rem; border-radius: var(--radius-md); }
+.stat-card .stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 700; }
+.stat-card .stat-label { color: var(--orbit-muted); font-size: 0.85rem; font-weight: 500; }
+
+/* ---------- Loading spinner (orbit) ---------- */
+.orbit-loader { width: 54px; height: 54px; position: relative; margin: 2rem auto; }
+.orbit-loader .planet { position: absolute; width: 12px; height: 12px; background: var(--orbit-gold); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.orbit-loader .track { position: absolute; inset: 0; border: 2px solid var(--orbit-border); border-top-color: var(--orbit-blue); border-radius: 50%; animation: orbit-spin 0.9s linear infinite; }
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Footer ---------- */
+.orbit-footer { background: var(--orbit-navy); color: rgba(255,255,255,0.6); padding: 2rem 0; font-size: 0.9rem; }
+
+/* ---------- Misc ---------- */
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orbit-blue);
+}
+.text-muted-orbit { color: var(--orbit-muted); }
+.form-control:focus, .form-select:focus {
+  border-color: var(--orbit-blue);
+  box-shadow: 0 0 0 3px rgba(67,97,238,0.15);
+}
