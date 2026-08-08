@@ -1,4 +1,0 @@
-com\jobconnect\apis\config\SecurityProperties.class
-com\jobconnect\apis\filter\JwtAuthenticationFilter.class
-com\jobconnect\apis\config\SecurityConfig.class
-com\jobconnect\apis\ApiGatewayApplication.class
